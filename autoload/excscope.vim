@@ -152,7 +152,7 @@ function excscope#connect()
     " don't show any message
 	setlocal nocsverb
     " connect cscope files
-    silent exec "cscope add " . s:csfile
+     silent exec "cscope add " . s:csfile.'/cscope.out'
 	silent! setlocal cscopequickfix=s-,c-,d-,i-,t-,e-
 endfunction 
 
@@ -342,7 +342,7 @@ endfunction
 
 function excscope#get_searchresult(search_pattern, search_method)
     " if cscope file not connect, connect it
-    if cscope_connection(4, "cscope.out", s:csfile ) == 0
+    if cscope_connection(1, "cscope.out", s:csfile ) == 0
         call excscope#connect()
     endif
 
